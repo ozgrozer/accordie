@@ -1,0 +1,6 @@
+.DS_Store
+.parcel-cache
+node_modules
+*.log
+*.sublime-*
+/dist

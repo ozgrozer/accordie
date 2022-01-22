@@ -1,0 +1,33 @@
+{
+  "license": "MIT",
+  "name": "accordie",
+  "version": "0.0.1",
+  "main": "./build/Accordie.js",
+  "description": "React Accordion",
+  "author": {
+    "name": "Ozgur Ozer",
+    "email": "ozgr@live.com",
+    "url": "https://github.com/ozgrozer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ozgrozer/accordie.git"
+  },
+  "keywords": [
+    "react",
+    "accordion",
+    "react-accordion"
+  ],
+  "scripts": {
+    "dev": "parcel ./example/index.html --dist-dir ./dist --public-url / --port 1340",
+    "build": "babel --plugins transform-react-jsx ./src/Accordie.jsx > ./build/Accordie.js"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "parcel": "^2.2.1",
+    "standard": "^16.0.4"
+  }
+}
