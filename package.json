@@ -19,7 +19,11 @@
     "react-accordion"
   ],
   "scripts": {
-    "dev": "parcel ./example/index.html --dist-dir ./dist --public-url / --port 1340"
+    "dev": "parcel ./example/index.html --dist-dir ./dist --public-url / --port 1340",
+    "build": "npm run build1 && npm run build2 && npm run build3",
+    "build1": "babel --plugins @babel/plugin-transform-react-jsx ./src/Accordie.jsx > ./build/Accordie.js",
+    "build2": "babel --plugins @babel/plugin-transform-react-jsx ./src/MainContext.jsx > ./build/MainContext.js",
+    "build3": "cp ./src/styles.module.css ./build/styles.module.css"
   },
   "dependencies": {
     "react": "^17.0.2",
