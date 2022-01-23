@@ -1,12 +1,19 @@
 import React, { useContext } from 'react'
 
 import styles from './styles.module.css'
-
 import { MainContext, MainProvider } from './MainContext'
 
 const clx = (...classes) => classes.join(' ')
 
-const Panel = ({ Heading, Content, panelId }) => {
+const Panel = props => {
+  const {
+    Heading,
+    Content,
+    panelId,
+    classList,
+    ...otherProps
+  } = props
+
   const { state, setState } = useContext(MainContext)
   const { accordions } = state
 
@@ -21,28 +28,45 @@ const Panel = ({ Heading, Content, panelId }) => {
     setState({ accordions: { ...accordions } })
   }
 
-  const panelClassName = clx(
-    styles.panel,
-    accordions[panelId] ? styles.open : styles.close
-  )
+  const customStyle = classList !== undefined
+  const panelIsOpen = accordions[panelId]
+
+  const panelClassName = customStyle
+    ? clx(
+        classList.panel,
+        panelIsOpen ? classList.open : classList.close
+      )
+    : clx(
+      styles.panel,
+      panelIsOpen ? styles.open : styles.close
+    )
+  const headingClassName = customStyle
+    ? classList.heading
+    : styles.heading
+  const contentClassName = customStyle
+    ? classList.content
+    : styles.content
 
   return (
-    <div className={panelClassName}>
+    <div
+      {...otherProps}
+      className={panelClassName}
+    >
       <div
         onClick={toggleContent}
-        className={styles.heading}
+        className={headingClassName}
       >
         {Heading}
       </div>
 
-      <div className={styles.content}>
+      <div className={contentClassName}>
         {Content}
       </div>
     </div>
   )
 }
 
-const Accordie = ({ children }) => {
+const Accordie = ({ children, classList }) => {
   return (
     <MainProvider>
       {children.map((child, key) => {
@@ -53,6 +77,7 @@ const Accordie = ({ children }) => {
             key={key}
             panelId={key}
             {...child.props}
+            classList={classList}
           />
         )
       })}
