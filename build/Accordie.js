@@ -6,11 +6,14 @@ import { MainContext, MainProvider } from './MainContext';
 
 const clx = (...classes) => classes.join(' ');
 
-const Panel = ({
-  Heading,
-  Content,
-  panelId
-}) => {
+const Panel = props => {
+  const {
+    Heading,
+    Content,
+    panelId,
+    classList,
+    ...otherProps
+  } = props;
   const {
     state,
     setState
@@ -35,26 +38,33 @@ const Panel = ({
     });
   };
 
-  const panelClassName = clx(styles.panel, accordions[panelId] ? styles.open : styles.close);
-  return /*#__PURE__*/React.createElement("div", {
+  const customStyle = classList !== undefined;
+  const panelIsOpen = accordions[panelId];
+  const panelClassName = customStyle ? clx(classList.panel, panelIsOpen ? classList.open : classList.close) : clx(styles.panel, panelIsOpen ? styles.open : styles.close);
+  const headingClassName = customStyle ? classList.heading : styles.heading;
+  const contentClassName = customStyle ? classList.content : styles.content;
+  return /*#__PURE__*/React.createElement("div", _extends({}, otherProps, {
     className: panelClassName
-  }, /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     onClick: toggleContent,
-    className: styles.heading
+    className: headingClassName
   }, Heading), /*#__PURE__*/React.createElement("div", {
-    className: styles.content
+    className: contentClassName
   }, Content));
 };
 
 const Accordie = ({
-  children
+  children,
+  classList
 }) => {
   return /*#__PURE__*/React.createElement(MainProvider, null, children.map((child, key) => {
     if (child.type.name !== 'Panel') return null;
     return /*#__PURE__*/React.createElement(Panel, _extends({
       key: key,
       panelId: key
-    }, child.props));
+    }, child.props, {
+      classList: classList
+    }));
   }));
 };
 
