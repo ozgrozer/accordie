@@ -54,6 +54,11 @@ const CSSModules = () => {
           Heading={<div>Heading 2</div>}
           Content={<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>}
         />
+
+        <Panel
+          Heading={<div>Heading 3</div>}
+          Content={<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>}
+        />
       </Accordie>
     </div>
   )
