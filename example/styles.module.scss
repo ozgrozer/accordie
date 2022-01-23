@@ -18,23 +18,24 @@
     .heading {
       color: #0c63e4;
       background-color: #e9f1fe;
-      border-bottom: 1px solid #ddd;
-    }
-    .content {
-      display: block;
+      border-bottom-color: #ddd;
     }
   }
   &.close {
-    .content {
-      display: none;
-    }
   }
 }
 
 .heading {
   padding: 15px 20px;
+  transition: all .25s ease;
+  border-bottom: 1px solid transparent;
 }
 
 .content {
-  padding: 15px 20px;
+  overflow: hidden;
+  transition: height .25s ease;
+
+  >div {
+    padding: 15px 20px;
+  }
 }
