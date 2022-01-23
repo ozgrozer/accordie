@@ -1,0 +1,40 @@
+.accordie {
+  margin-top: 40px;
+}
+
+.panel {
+  border: 1px solid #ddd;
+  border-top-width: 0;
+  &:first-child {
+    border-top-width: 1px;
+  }
+  &:first-child, &:first-child .heading {
+    border-radius: 10px 10px 0 0;
+  }
+  &:last-child {
+    border-radius: 0 0 10px 10px;
+  }
+  &.open {
+    .heading {
+      color: #0c63e4;
+      background-color: #e9f1fe;
+      border-bottom: 1px solid #ddd;
+    }
+    .content {
+      display: block;
+    }
+  }
+  &.close {
+    .content {
+      display: none;
+    }
+  }
+}
+
+.heading {
+  padding: 15px 20px;
+}
+
+.content {
+  padding: 15px 20px;
+}

@@ -1,0 +1,26 @@
+.accordie {
+  margin-top: 20px;
+}
+
+.panel {
+  color:  #fff;
+  margin-top: 10px;
+  background-color: #2b3241;
+}
+.panel:first-child {
+  margin-top: 0;
+}
+.panel.open .content {
+  display: block;
+}
+.panel.close .content {
+  display: none;
+}
+
+.heading {
+  padding: 20px;
+}
+
+.content {
+  padding: 0 20px 20px 20px;
+}

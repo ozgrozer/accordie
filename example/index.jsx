@@ -1,33 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import './styles.css'
+import styles from './styles.module.scss'
 import { Accordie, Panel } from './../src/Accordie'
 
 const RegularCSS = () => {
   return (
     <>
-      <style>
-        {`
-          .panel {
-            margin-top: 10px;
-          }
-          .panel.open .content {
-            display: block;
-          }
-          .panel.close .content {
-            display: none;
-          }
-          .heading {
-            padding: 10px;
-            background-color: #ddd;
-          }
-          .content {
-            padding: 10px;
-          }
-        `}
-      </style>
-
-      <div>
+      <div className='accordie'>
         <Accordie
           classList={{
             panel: 'panel',
@@ -38,13 +19,13 @@ const RegularCSS = () => {
           }}
         >
           <Panel
-            Heading='heading 1'
-            Content='content 1'
+            Heading='Heading 1'
+            Content='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
           />
 
           <Panel
-            Heading='heading 2'
-            Content='content 2'
+            Heading='Heading 2'
+            Content='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
           />
         </Accordie>
       </div>
@@ -52,4 +33,39 @@ const RegularCSS = () => {
   )
 }
 
-ReactDOM.render(<RegularCSS />, document.getElementById('root'))
+const CSSModules = () => {
+  return (
+    <div className={styles.accordie}>
+      <Accordie
+        classList={{
+          panel: styles.panel,
+          heading: styles.heading,
+          content: styles.content,
+          open: styles.open,
+          close: styles.close
+        }}
+      >
+        <Panel
+          Heading={<div>Heading 1</div>}
+          Content={<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>}
+        />
+
+        <Panel
+          Heading={<div>Heading 2</div>}
+          Content={<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>}
+        />
+      </Accordie>
+    </div>
+  )
+}
+
+const App = () => {
+  return (
+    <div style={{ width: '500px', margin: 'auto' }}>
+      <RegularCSS />
+      <CSSModules />
+    </div>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById('root'))
