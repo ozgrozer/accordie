@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect, useRef } from 'react'
 
 import styles from './styles.module.css'
 import { MainContext, MainProvider } from './MainContext'
@@ -14,9 +14,14 @@ const Panel = props => {
     ...otherProps
   } = props
 
+  const [contentHeight, setContentHeight] = useState(0)
+  const contentRef = useRef(null)
+  useEffect(() => {
+    setContentHeight(contentRef.current.scrollHeight)
+  }, [])
+
   const { state, setState } = useContext(MainContext)
   const { accordions } = state
-
   const toggleContent = () => {
     for (const _key in accordions) {
       const key = parseInt(_key)
@@ -30,7 +35,6 @@ const Panel = props => {
 
   const customStyle = classList !== undefined
   const panelIsOpen = accordions[panelId]
-
   const panelClassName = customStyle
     ? clx(
         classList.panel,
@@ -47,6 +51,8 @@ const Panel = props => {
     ? classList.content
     : styles.content
 
+  const contentStyle = { height: panelIsOpen ? contentHeight : 0 }
+
   return (
     <div
       {...otherProps}
@@ -59,7 +65,11 @@ const Panel = props => {
         {Heading}
       </div>
 
-      <div className={contentClassName}>
+      <div
+        ref={contentRef}
+        style={contentStyle}
+        className={contentClassName}
+      >
         {Content}
       </div>
     </div>
