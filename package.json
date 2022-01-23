@@ -32,6 +32,7 @@
   "devDependencies": {
     "@babel/cli": "^7.16.8",
     "@babel/plugin-transform-react-jsx": "^7.16.7",
+    "@parcel/transformer-sass": "^2.2.1",
     "parcel": "^2.2.1",
     "standard": "^16.0.4"
   }
