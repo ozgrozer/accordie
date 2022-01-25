@@ -26,7 +26,7 @@
     "build3": "node-sass ./src/styles.module.scss ./build/styles.module.css",
     "build4": "sed -i '' 's/styles.module.scss/styles.module.css/g' ./build/Accordie.js"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -36,6 +36,8 @@
     "@parcel/transformer-sass": "^2.2.1",
     "node-sass": "^7.0.1",
     "parcel": "^2.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "standard": "^16.0.4"
   }
 }
