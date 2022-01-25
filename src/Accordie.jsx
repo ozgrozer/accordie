@@ -42,14 +42,17 @@ const Panel = props => {
       )
     : clx(
       styles.panel,
-      panelIsOpen ? styles.open : styles.close
+      classNames.panel,
+      panelIsOpen
+        ? clx(styles.open, classNames.open)
+        : clx(styles.close, classNames.close)
     )
   const headingClassName = customStyle
     ? classNames.heading
-    : styles.heading
+    : clx(styles.heading, classNames.heading)
   const contentClassName = customStyle
     ? classNames.content
-    : styles.content
+    : clx(styles.content, classNames.content)
 
   const contentStyle = { height: panelIsOpen ? contentHeight : 0 }
 
@@ -87,8 +90,8 @@ const Accordie = ({ children, classNames, customStyle }) => {
             key={key}
             panelId={key}
             {...child.props}
-            classNames={classNames}
             customStyle={customStyle}
+            classNames={classNames || {}}
           />
         )
       })}
