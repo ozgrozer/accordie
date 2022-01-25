@@ -1,6 +1,7 @@
-# Accordie
+# Accordie (Custom React Accordion Component)
 
-React Accordion
+[![npm](https://img.shields.io/npm/v/accordie.svg?style=flat-square)](https://www.npmjs.com/package/accordie)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/ozgrozer/accordie/blob/master/license)
 
 ## Contribution
 
