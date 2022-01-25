@@ -1,7 +1,7 @@
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 import React, { useContext, useState, useEffect, useRef } from 'react';
-import styles from './styles.module.css';
+import styles from './styles.module.scss';
 import { MainContext, MainProvider } from './MainContext';
 
 const clx = (...classes) => classes.join(' ');
@@ -11,7 +11,8 @@ const Panel = props => {
     Heading,
     Content,
     panelId,
-    classList,
+    classNames,
+    customStyle,
     ...otherProps
   } = props;
   const [contentHeight, setContentHeight] = useState(0);
@@ -43,11 +44,10 @@ const Panel = props => {
     });
   };
 
-  const customStyle = classList !== undefined;
   const panelIsOpen = accordions[panelId];
-  const panelClassName = customStyle ? clx(classList.panel, panelIsOpen ? classList.open : classList.close) : clx(styles.panel, panelIsOpen ? styles.open : styles.close);
-  const headingClassName = customStyle ? classList.heading : styles.heading;
-  const contentClassName = customStyle ? classList.content : styles.content;
+  const panelClassName = customStyle ? clx(classNames.panel, panelIsOpen ? classNames.open : classNames.close) : clx(styles.panel, classNames.panel, panelIsOpen ? clx(styles.open, classNames.open) : clx(styles.close, classNames.close));
+  const headingClassName = customStyle ? classNames.heading : clx(styles.heading, classNames.heading);
+  const contentClassName = customStyle ? classNames.content : clx(styles.content, classNames.content);
   const contentStyle = {
     height: panelIsOpen ? contentHeight : 0
   };
@@ -65,7 +65,8 @@ const Panel = props => {
 
 const Accordie = ({
   children,
-  classList
+  classNames,
+  customStyle
 }) => {
   return /*#__PURE__*/React.createElement(MainProvider, null, children.map((child, key) => {
     if (child.type.name !== 'Panel') return null;
@@ -73,7 +74,8 @@ const Accordie = ({
       key: key,
       panelId: key
     }, child.props, {
-      classList: classList
+      customStyle: customStyle,
+      classNames: classNames || {}
     }));
   }));
 };
