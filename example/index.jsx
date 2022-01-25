@@ -34,6 +34,7 @@ const RegularCSS = () => {
 
       <div className='accordie'>
         <Accordie
+          customStyle
           classNames={{
             panel: 'panel',
             heading: 'heading',
@@ -64,7 +65,8 @@ const CSSModules = () => {
 
       <div className={styles.accordie}>
         <Accordie
-          classList={{
+          customStyle
+          classNames={{
             panel: styles.panel,
             heading: styles.heading,
             content: styles.content,

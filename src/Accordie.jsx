@@ -11,6 +11,7 @@ const Panel = props => {
     Content,
     panelId,
     classNames,
+    customStyle,
     ...otherProps
   } = props
 
@@ -33,7 +34,6 @@ const Panel = props => {
     setState({ accordions: { ...accordions } })
   }
 
-  const customStyle = classNames !== undefined
   const panelIsOpen = accordions[panelId]
   const panelClassName = customStyle
     ? clx(
@@ -76,7 +76,7 @@ const Panel = props => {
   )
 }
 
-const Accordie = ({ children, classNames }) => {
+const Accordie = ({ children, classNames, customStyle }) => {
   return (
     <MainProvider>
       {children.map((child, key) => {
@@ -88,6 +88,7 @@ const Accordie = ({ children, classNames }) => {
             panelId={key}
             {...child.props}
             classNames={classNames}
+            customStyle={customStyle}
           />
         )
       })}
