@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from 'react'
 
-import styles from './styles.module.css'
+import styles from './styles.module.scss'
 import { MainContext, MainProvider } from './MainContext'
 
 const clx = (...classes) => classes.join(' ')

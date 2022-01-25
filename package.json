@@ -23,7 +23,7 @@
     "build": "npm run build1 && npm run build2 && npm run build3",
     "build1": "babel --plugins @babel/plugin-transform-react-jsx ./src/Accordie.jsx > ./build/Accordie.js",
     "build2": "babel --plugins @babel/plugin-transform-react-jsx ./src/MainContext.jsx > ./build/MainContext.js",
-    "build3": "cp ./src/styles.module.css ./build/styles.module.css"
+    "build3": "node-sass ./src/styles.module.scss ./build/styles.module.css"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -33,6 +33,7 @@
     "@babel/cli": "^7.16.8",
     "@babel/plugin-transform-react-jsx": "^7.16.7",
     "@parcel/transformer-sass": "^2.2.1",
+    "node-sass": "^7.0.1",
     "parcel": "^2.2.1",
     "standard": "^16.0.4"
   }
