@@ -34,7 +34,7 @@ const RegularCSS = () => {
 
       <div className='accordie'>
         <Accordie
-          classList={{
+          classNames={{
             panel: 'panel',
             heading: 'heading',
             content: 'content',

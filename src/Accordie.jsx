@@ -10,7 +10,7 @@ const Panel = props => {
     Heading,
     Content,
     panelId,
-    classList,
+    classNames,
     ...otherProps
   } = props
 
@@ -33,22 +33,22 @@ const Panel = props => {
     setState({ accordions: { ...accordions } })
   }
 
-  const customStyle = classList !== undefined
+  const customStyle = classNames !== undefined
   const panelIsOpen = accordions[panelId]
   const panelClassName = customStyle
     ? clx(
-        classList.panel,
-        panelIsOpen ? classList.open : classList.close
+        classNames.panel,
+        panelIsOpen ? classNames.open : classNames.close
       )
     : clx(
       styles.panel,
       panelIsOpen ? styles.open : styles.close
     )
   const headingClassName = customStyle
-    ? classList.heading
+    ? classNames.heading
     : styles.heading
   const contentClassName = customStyle
-    ? classList.content
+    ? classNames.content
     : styles.content
 
   const contentStyle = { height: panelIsOpen ? contentHeight : 0 }
@@ -76,7 +76,7 @@ const Panel = props => {
   )
 }
 
-const Accordie = ({ children, classList }) => {
+const Accordie = ({ children, classNames }) => {
   return (
     <MainProvider>
       {children.map((child, key) => {
@@ -87,7 +87,7 @@ const Accordie = ({ children, classList }) => {
             key={key}
             panelId={key}
             {...child.props}
-            classList={classList}
+            classNames={classNames}
           />
         )
       })}
