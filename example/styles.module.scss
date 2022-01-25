@@ -1,24 +1,18 @@
 .accordie {
-  margin-top: 40px;
 }
 
 .panel {
-  border: 1px solid #ddd;
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #fff;
   border-top-width: 0;
   &:first-child {
     border-top-width: 1px;
   }
-  &:first-child, &:first-child .heading {
-    border-radius: 10px 10px 0 0;
-  }
-  &:last-child {
-    border-radius: 0 0 10px 10px;
-  }
   &.open {
     .heading {
-      color: #0c63e4;
-      background-color: #e9f1fe;
-      border-bottom-color: #ddd;
+      background-color: #555;
+      border-bottom-color: #fff;
     }
   }
   &.close {
@@ -26,16 +20,16 @@
 }
 
 .heading {
-  padding: 15px 20px;
-  transition: all .25s ease;
+  padding: 10px 15px;
+  transition: all .15s ease-in-out;
   border-bottom: 1px solid transparent;
 }
 
 .content {
   overflow: hidden;
-  transition: height .25s ease;
+  transition: all .15s ease-in-out;
 
   >div {
-    padding: 15px 20px;
+    padding: 10px 15px;
   }
 }

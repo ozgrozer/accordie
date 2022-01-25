@@ -3,8 +3,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
-.accordie {
-  margin-top: 20px;
+.title {
+  margin-top: 50px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .panel {
@@ -22,6 +25,7 @@ body {
 
 .content {
   overflow: hidden;
+  transition: all .35s ease-in-out;
 }
 .content >div {
   padding: 0 20px 20px 20px;
