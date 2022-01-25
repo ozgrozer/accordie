@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "name": "accordie",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "./build/Accordie.js",
   "description": "React Accordion",
   "author": {
