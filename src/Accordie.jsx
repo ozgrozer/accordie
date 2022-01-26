@@ -1,7 +1,6 @@
-import React, { useContext, useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import './styles.scss'
-import { MainContext, MainProvider } from './MainContext'
 
 const clx = (...classes) => classes.join(' ')
 
@@ -10,8 +9,10 @@ const Panel = props => {
     Heading,
     Content,
     panelId,
+    accordions,
     classNames,
     customStyle,
+    setAccordions,
     ...otherProps
   } = props
 
@@ -21,8 +22,6 @@ const Panel = props => {
     setContentHeight(contentRef.current.scrollHeight)
   }, [])
 
-  const { state, setState } = useContext(MainContext)
-  const { accordions } = state
   const toggleContent = () => {
     for (const _key in accordions) {
       const key = parseInt(_key)
@@ -31,7 +30,7 @@ const Panel = props => {
       }
     }
     accordions[panelId] = !accordions[panelId]
-    setState({ accordions: { ...accordions } })
+    setAccordions({ ...accordions })
   }
 
   const panelIsOpen = accordions[panelId]
@@ -80,8 +79,10 @@ const Panel = props => {
 }
 
 const Accordie = ({ children, classNames, customStyle }) => {
+  const [accordions, setAccordions] = useState([])
+
   return (
-    <MainProvider>
+    <>
       {children.map((child, key) => {
         if (child.type.name !== 'Panel') return null
 
@@ -90,12 +91,14 @@ const Accordie = ({ children, classNames, customStyle }) => {
             key={key}
             panelId={key}
             {...child.props}
+            accordions={accordions}
             customStyle={customStyle}
+            setAccordions={setAccordions}
             classNames={classNames || {}}
           />
         )
       })}
-    </MainProvider>
+    </>
   )
 }
 

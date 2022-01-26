@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import './../build/styles.css'
+import { Accordie, Panel } from './../build/Accordie'
+
 import './styles.css'
 import styles from './styles.module.scss'
-import { Accordie, Panel } from './../build/Accordie'
 
 const NoCustomStyle = () => {
   return (
