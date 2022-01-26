@@ -4,7 +4,9 @@ import './styles.scss'
 
 const clx = (...classes) => classes.join(' ')
 
-const Panel = props => {
+const Panel = () => null
+
+const PanelInner = props => {
   const {
     Heading,
     Content,
@@ -87,7 +89,7 @@ const Accordie = ({ children, classNames, customStyle }) => {
         if (child.type.name !== 'Panel') return null
 
         return (
-          <Panel
+          <PanelInner
             key={key}
             panelId={key}
             {...child.props}
