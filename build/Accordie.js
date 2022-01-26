@@ -42,7 +42,11 @@ var clx = function clx() {
   return classes.join(' ');
 };
 
-var Panel = function Panel(props) {
+var Panel = function Panel() {
+  return null;
+};
+
+var PanelInner = function PanelInner(props) {
   var Heading = props.Heading,
       Content = props.Content,
       panelId = props.panelId,
@@ -106,7 +110,7 @@ var Accordie = function Accordie(_ref) {
 
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, children.map(function (child, key) {
     if (child.type.name !== 'Panel') return null;
-    return /*#__PURE__*/_react["default"].createElement(Panel, _extends({
+    return /*#__PURE__*/_react["default"].createElement(PanelInner, _extends({
       key: key,
       panelId: key
     }, child.props, {
