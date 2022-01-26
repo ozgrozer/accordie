@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import './styles.css'
 import styles from './styles.module.scss'
-import { Accordie, Panel } from './../src/Accordie'
+import { Accordie, Panel } from './../build/Accordie'
 
 const NoCustomStyle = () => {
   return (

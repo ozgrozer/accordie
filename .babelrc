@@ -1,10 +1,6 @@
 {
-  "plugins": [
-    [
-      "@babel/plugin-transform-react-jsx",
-      {
-        "runtime": "automatic"
-      }
-    ]
+  "presets": [
+    "@babel/env",
+    "@babel/preset-react"
   ]
 }

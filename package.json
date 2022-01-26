@@ -20,7 +20,8 @@
   ],
   "scripts": {
     "dev": "parcel ./example/index.html --dist-dir ./dist --public-url / --port 1340",
-    "build": "npm run build1 && npm run build2 && npm run build3 && npm run build4",
+    "build": "rm -rf build && NODE_ENV=production babel src --out-dir build --copy-files",
+    "build0": "npm run build1 && npm run build2 && npm run build3 && npm run build4",
     "build1": "babel --plugins @babel/plugin-transform-react-jsx ./src/Accordie.jsx > ./build/Accordie.js",
     "build2": "babel --plugins @babel/plugin-transform-react-jsx ./src/MainContext.jsx > ./build/MainContext.js",
     "build3": "node-sass ./src/styles.module.scss ./build/styles.module.css",
@@ -32,7 +33,11 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.12",
     "@babel/plugin-transform-react-jsx": "^7.16.7",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
     "@parcel/transformer-sass": "^2.2.1",
     "node-sass": "^7.0.1",
     "parcel": "^2.2.1",
