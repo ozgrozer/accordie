@@ -4,13 +4,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _stylesModule = _interopRequireDefault(require("./styles.module.scss"));
+require("./styles.scss");
 
 var _MainContext = require("./MainContext");
 
 var _excluded = ["Heading", "Content", "panelId", "classNames", "customStyle"];
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -88,9 +86,9 @@ var Panel = function Panel(props) {
   };
 
   var panelIsOpen = accordions[panelId];
-  var panelClassName = customStyle ? clx(classNames.panel, panelIsOpen ? classNames.open : classNames.close) : clx(_stylesModule["default"].panel, classNames.panel, panelIsOpen ? clx(_stylesModule["default"].open, classNames.open) : clx(_stylesModule["default"].close, classNames.close));
-  var headingClassName = customStyle ? classNames.heading : clx(_stylesModule["default"].heading, classNames.heading);
-  var contentClassName = customStyle ? classNames.content : clx(_stylesModule["default"].content, classNames.content);
+  var panelClassName = customStyle ? clx(classNames.panel, panelIsOpen ? classNames.open : classNames.close) : clx('panel', classNames.panel, panelIsOpen ? clx('open', classNames.open) : clx('close', classNames.close));
+  var headingClassName = customStyle ? classNames.heading : clx('heading', classNames.heading);
+  var contentClassName = customStyle ? classNames.content : clx('content', classNames.content);
   var contentStyle = {
     height: panelIsOpen ? contentHeight : 0
   };
