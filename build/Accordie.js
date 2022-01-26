@@ -4,9 +4,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _MainContext = require("./MainContext");
-
-var _excluded = ["Heading", "Content", "panelId", "classNames", "customStyle"];
+var _excluded = ["Heading", "Content", "panelId", "accordions", "classNames", "customStyle", "setAccordions"];
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -48,8 +46,10 @@ var Panel = function Panel(props) {
   var Heading = props.Heading,
       Content = props.Content,
       panelId = props.panelId,
+      accordions = props.accordions,
       classNames = props.classNames,
       customStyle = props.customStyle,
+      setAccordions = props.setAccordions,
       otherProps = _objectWithoutProperties(props, _excluded);
 
   var _useState = (0, _react.useState)(0),
@@ -62,12 +62,6 @@ var Panel = function Panel(props) {
     setContentHeight(contentRef.current.scrollHeight);
   }, []);
 
-  var _useContext = (0, _react.useContext)(_MainContext.MainContext),
-      state = _useContext.state,
-      setState = _useContext.setState;
-
-  var accordions = state.accordions;
-
   var toggleContent = function toggleContent() {
     for (var _key in accordions) {
       var key = parseInt(_key);
@@ -78,9 +72,7 @@ var Panel = function Panel(props) {
     }
 
     accordions[panelId] = !accordions[panelId];
-    setState({
-      accordions: _objectSpread({}, accordions)
-    });
+    setAccordions(_objectSpread({}, accordions));
   };
 
   var panelIsOpen = accordions[panelId];
@@ -106,13 +98,21 @@ var Accordie = function Accordie(_ref) {
   var children = _ref.children,
       classNames = _ref.classNames,
       customStyle = _ref.customStyle;
-  return /*#__PURE__*/_react["default"].createElement(_MainContext.MainProvider, null, children.map(function (child, key) {
+
+  var _useState3 = (0, _react.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      accordions = _useState4[0],
+      setAccordions = _useState4[1];
+
+  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, children.map(function (child, key) {
     if (child.type.name !== 'Panel') return null;
     return /*#__PURE__*/_react["default"].createElement(Panel, _extends({
       key: key,
       panelId: key
     }, child.props, {
+      accordions: accordions,
       customStyle: customStyle,
+      setAccordions: setAccordions,
       classNames: classNames || {}
     }));
   }));
