@@ -1,0 +1,26 @@
+.panel {
+  border: 1px solid #ddd;
+  border-top-width: 0; }
+  .panel:first-child {
+    border-top-width: 1px; }
+  .panel:first-child, .panel:first-child .heading {
+    border-radius: 10px 10px 0 0; }
+  .panel:last-child {
+    border-radius: 0 0 10px 10px; }
+  .panel.open .heading {
+    color: #0c63e4;
+    background-color: #e9f1fe;
+    border-bottom-color: #ddd; }
+
+.heading {
+  cursor: pointer;
+  user-select: none;
+  padding: 15px 20px;
+  transition: all .25s ease;
+  border-bottom: 1px solid transparent; }
+
+.content {
+  overflow: hidden;
+  transition: height .25s ease; }
+  .content > div {
+    padding: 15px 20px; }
