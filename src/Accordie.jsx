@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from 'react'
 
-import styles from './styles.module.scss'
+import './styles.scss'
 import { MainContext, MainProvider } from './MainContext'
 
 const clx = (...classes) => classes.join(' ')
@@ -41,18 +41,18 @@ const Panel = props => {
         panelIsOpen ? classNames.open : classNames.close
       )
     : clx(
-      styles.panel,
+      'panel',
       classNames.panel,
       panelIsOpen
-        ? clx(styles.open, classNames.open)
-        : clx(styles.close, classNames.close)
+        ? clx('open', classNames.open)
+        : clx('close', classNames.close)
     )
   const headingClassName = customStyle
     ? classNames.heading
-    : clx(styles.heading, classNames.heading)
+    : clx('heading', classNames.heading)
   const contentClassName = customStyle
     ? classNames.content
-    : clx(styles.content, classNames.content)
+    : clx('content', classNames.content)
 
   const contentStyle = { height: panelIsOpen ? contentHeight : 0 }
 

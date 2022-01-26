@@ -36,11 +36,11 @@ const RegularCSS = () => {
         <Accordie
           customStyle
           classNames={{
-            panel: 'panel',
-            heading: 'heading',
-            content: 'content',
-            open: 'open',
-            close: 'close'
+            panel: 'panel2',
+            heading: 'heading2',
+            content: 'content2',
+            open: 'open2',
+            close: 'close2'
           }}
         >
           <Panel
