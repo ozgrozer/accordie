@@ -4,8 +4,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 
 var _react = _interopRequireWildcard(require("react"));
 
-require("./styles.scss");
-
 var _MainContext = require("./MainContext");
 
 var _excluded = ["Heading", "Content", "panelId", "classNames", "customStyle"];
