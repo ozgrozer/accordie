@@ -22,7 +22,7 @@ const PanelInner = props => {
   const contentRef = useRef(null)
   useEffect(() => {
     setContentHeight(contentRef.current.scrollHeight)
-  }, [])
+  }, [contentRef.current])
 
   const toggleContent = () => {
     for (const _key in accordions) {

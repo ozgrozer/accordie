@@ -64,7 +64,7 @@ var PanelInner = function PanelInner(props) {
   var contentRef = (0, _react.useRef)(null);
   (0, _react.useEffect)(function () {
     setContentHeight(contentRef.current.scrollHeight);
-  }, []);
+  }, [contentRef.current]);
 
   var toggleContent = function toggleContent() {
     for (var _key in accordions) {
